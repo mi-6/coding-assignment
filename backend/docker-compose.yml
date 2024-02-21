@@ -6,8 +6,6 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8000 -b '0.0.0.0'"
     volumes:
       - .:/rails
-    environment:
-      - RAILS_ENV=development
     ports:
       - 8000:8000
     depends_on:
@@ -16,7 +14,7 @@ services:
   db:
     image: postgres:13
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - habits_db_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
@@ -24,4 +22,4 @@ services:
       - 5432:5432
 
 volumes:
-  db_data:
+  habits_db_data:
